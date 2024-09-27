@@ -21,3 +21,28 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+# macOS system files
+.DS_Store
+.Trash
+.localized
+
+# VSCode settings
+.vscode/
+
+# Node.js
+node_modules/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Other user-specific files
+/Applications
+/Desktop
+/Downloads
+/Library
+/Movies
+/Music
+/Pictures
+/Public
