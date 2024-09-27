@@ -1,41 +1,60 @@
-import React from 'react'
-import { Wallet, ChevronDown, Globe, LogIn } from 'lucide-react'
+import React from 'react';
+import { Wallet, ChevronDown, Globe, LogIn } from 'lucide-react';
 
 export default function CommunaHome() {
   return (
     <div className="min-h-screen bg-[#f5f5e5] flex flex-col">
-      {/* Top banner with batched buttons */}
-      <div className="bg-[#8fbc8f] text-white p-4">
-        <div className="max-w-6xl mx-auto flex justify-between items-center">
+      {/* Top banner with action buttons */}
+      <header className="bg-[#8fbc8f] text-white p-4">
+        <div className="max-w-6xl mx-auto flex flex-wrap justify-between items-center">
+          {/* Left-side buttons */}
           <div className="flex space-x-4">
-            <button className="flex items-center space-x-2 px-4 py-2 bg-[#7cac7c] rounded-full hover:bg-[#6b9b6b] transition-colors">
+            <button
+              type="button"
+              aria-label="Sign In"
+              className="flex items-center space-x-2 px-4 py-2 bg-[#7cac7c] rounded-full hover:bg-[#6b9b6b] transition-colors"
+            >
               <LogIn size={20} />
-              <span>Sign In</span>
+              <span className="hidden sm:inline">Sign In</span>
             </button>
-            <button className="flex items-center space-x-2 px-4 py-2 bg-[#7cac7c] rounded-full hover:bg-[#6b9b6b] transition-colors">
+            <button
+              type="button"
+              aria-label="Connect Wallet"
+              className="flex items-center space-x-2 px-4 py-2 bg-[#7cac7c] rounded-full hover:bg-[#6b9b6b] transition-colors"
+            >
               <Wallet size={20} />
-              <span>Connect Wallet</span>
+              <span className="hidden sm:inline">Connect Wallet</span>
             </button>
           </div>
-          <div className="flex space-x-4">
-            <button className="flex items-center space-x-2 px-4 py-2 bg-[#7cac7c] rounded-full hover:bg-[#6b9b6b] transition-colors">
+
+          {/* Right-side selectors */}
+          <div className="flex space-x-4 mt-4 sm:mt-0">
+            <button
+              type="button"
+              aria-label="Select Language"
+              className="flex items-center space-x-2 px-4 py-2 bg-[#7cac7c] rounded-full hover:bg-[#6b9b6b] transition-colors"
+            >
               <Globe size={20} />
-              <span>English</span>
+              <span className="hidden sm:inline">English</span>
               <ChevronDown size={20} />
             </button>
-            <button className="flex items-center space-x-2 px-4 py-2 bg-[#7cac7c] rounded-full hover:bg-[#6b9b6b] transition-colors">
-              <span>USD</span>
+            <button
+              type="button"
+              aria-label="Select Currency"
+              className="flex items-center space-x-2 px-4 py-2 bg-[#7cac7c] rounded-full hover:bg-[#6b9b6b] transition-colors"
+            >
+              <span className="hidden sm:inline">USD</span>
               <ChevronDown size={20} />
             </button>
           </div>
         </div>
-      </div>
+      </header>
 
       {/* Main content */}
-      <div className="flex-grow flex items-center justify-center p-4">
+      <main className="flex-grow flex items-center justify-center p-4">
         <div className="relative w-full max-w-3xl aspect-square">
           {/* Background leaf illustration */}
-          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100">
+          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" aria-hidden="true">
             <defs>
               <radialGradient id="leafGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
                 <stop offset="0%" stopColor="#e6eee6" />
@@ -63,10 +82,10 @@ export default function CommunaHome() {
           </div>
 
           {/* Surrounding circles */}
-          {['transact', 'invest', 'connect'].map((text, index) => (
+          {['Transact', 'Invest', 'Connect'].map((text, index) => (
             <div
               key={text}
-              className="absolute w-1/4 aspect-square bg-white rounded-full flex flex-col items-center justify-center shadow-md"
+              className="absolute w-1/4 aspect-square bg-white rounded-full flex flex-col items-center justify-center shadow-md p-4"
               style={{
                 top: `${50 - 12.5 + 25 * Math.sin((index * 2 * Math.PI) / 3)}%`,
                 left: `${50 - 12.5 + 25 * Math.cos((index * 2 * Math.PI) / 3)}%`,
@@ -74,19 +93,40 @@ export default function CommunaHome() {
             >
               <h2 className="text-lg font-serif text-[#2f4f4f]">{text}</h2>
               <p className="text-xs text-[#5f9ea0] mt-1 px-2 text-center">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                {getDescription(text)}
               </p>
             </div>
           ))}
 
           {/* Living button */}
           <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
-            <button className="px-4 py-2 bg-[#8fbc8f] text-white rounded-full shadow-md hover:bg-[#7cac7c] transition-colors">
+            <button
+              type="button"
+              aria-label="Living"
+              className="px-4 py-2 bg-[#8fbc8f] text-white rounded-full shadow-md hover:bg-[#7cac7c] transition-colors"
+            >
               Living
             </button>
           </div>
         </div>
-      </div>
+      </main>
     </div>
-  )
+  );
+}
+
+/**
+ * Returns a description based on the provided text.
+ * Replace these descriptions with content relevant to your application.
+ *
+ * @param {string} text - The text identifier for which to get the description.
+ * @returns {string} - A descriptive string.
+ */
+function getDescription(text) {
+  const descriptions = {
+    Transact: 'Perform secure transactions seamlessly.',
+    Invest: 'Invest in opportunities with confidence.',
+    Connect: 'Connect with the community easily.',
+  };
+
+  return descriptions[text] || 'Discover more about our features.';
 }
