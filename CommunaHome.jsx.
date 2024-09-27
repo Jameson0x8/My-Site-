@@ -1,3 +1,6 @@
+# CommunaHome Component
+
+```jsx
 import { Wallet, ChevronDown, Globe, LogIn } from 'lucide-react';
 
 const Button = ({ Icon, children, additionalClasses = '', ...props }) => (
@@ -8,6 +11,7 @@ const Button = ({ Icon, children, additionalClasses = '', ...props }) => (
     {Icon && <Icon size={20} aria-hidden="true" />}
     <span>{children}</span>
   </button>
+);
 );
 
 const TopBanner = () => (
@@ -92,5 +96,3 @@ export default function CommunaHome() {
         </div>
       </div>
     </div>
-  );
-} 
