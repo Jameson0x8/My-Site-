@@ -6,8 +6,8 @@ export default function CommunaHome() {
     <div className="min-h-screen bg-[#f5f5e5] flex flex-col">
       {/* Top banner with batched buttons */}
       <div className="bg-[#8fbc8f] text-white p-4">
-        <div className="max-w-6xl mx-auto flex justify-between items-center">
-          <div className="flex space-x-4">
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row justify-between items-center">
+          <div className="flex space-x-4 mb-4 lg:mb-0">
             <button className="flex items-center space-x-2 px-4 py-2 bg-[#7cac7c] rounded-full hover:bg-[#6b9b6b] transition-colors">
               <LogIn size={20} />
               <span>Sign In</span>
@@ -34,8 +34,13 @@ export default function CommunaHome() {
       {/* Main content */}
       <div className="flex-grow flex items-center justify-center p-4">
         <div className="relative w-full max-w-3xl aspect-square">
-          {/* Background leaf illustration */}
-          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100">
+          {/* Background leaf illustration with accessibility */}
+          <svg
+            className="absolute inset-0 w-full h-full"
+            viewBox="0 0 100 100"
+            role="img"
+            aria-label="Leaf illustration"
+          >
             <defs>
               <radialGradient id="leafGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
                 <stop offset="0%" stopColor="#e6eee6" />
@@ -89,13 +94,4 @@ export default function CommunaHome() {
       </div>
     </div>
   )
-}function CommunaHome() {
-  return (
-    <div className="bg-blue-500 text-white p-4">
-      <h1 className="text-2xl font-bold">Welcome to CommunaHome</h1>
-      <p>This is your landing page styled with Tailwind CSS.</p>
-    </div>
-  );
 }
-
-export default CommunaHome;
